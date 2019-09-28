@@ -1,5 +1,5 @@
 {
-    "name": "denis909/db",
+    "name": "denis909/db-mysqli",
     "license": "MIT",
     "autoload": {
         "psr-4": {
