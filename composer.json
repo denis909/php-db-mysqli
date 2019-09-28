@@ -1,0 +1,12 @@
+{
+    "name": "denis909/db",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "denis909\\db\\": ""
+        }
+    },
+    "require": {
+        "denis909/php-db": "dev-master"
+    }
+}
