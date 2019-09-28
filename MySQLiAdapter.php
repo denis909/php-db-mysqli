@@ -18,7 +18,7 @@ class MySQLiAdapter implements AdapterInterface
         {
             $error = mysqli_connect_error();
        
-            throw new DbException($error);
+            throw new Exception($error);
         }
         else
         {
@@ -50,7 +50,7 @@ class MySQLiAdapter implements AdapterInterface
         {
             $error = mysqli_error($this->_connection);
 
-            throw new DbException($error);
+            throw new Exception($error);
         }
 
         return $return;

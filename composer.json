@@ -1,5 +1,5 @@
 {
-    "name": "denis909/php-db-mysqli",
+    "name": "denis909/php-db-mysqli-adapter",
     "license": "MIT",
     "autoload": {
         "psr-4": {
