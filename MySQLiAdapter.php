@@ -56,6 +56,33 @@ class MySQLiAdapter implements AdapterInterface
         return $return;
     }
 
+    public function multiQuery($sql)
+    {
+        $return = mysqli_multi_query($this->_connection, $sql);
+
+        if (!$return)
+        {
+            $error = mysqli_error($this->_connection);
+
+            throw new Exception($error);
+        }
+
+        do
+        {
+            mysqli_next_result($this->_connection);            
+        }
+        while(mysqli_more_results($this->_connection));
+
+        if (mysqli_errno($this->_connection))
+        {
+            $error = mysqli_error($this->_connection);
+        
+            throw new Exception($error);
+        }
+
+        return $return;
+    }
+
     public function queryOne($sql)
     {
         $result = $this->query($sql);
