@@ -3,7 +3,7 @@
  * @author denis909
  * @license MIT
  */
-namespace denis909\db;
+namespace Denis909\Db;
 
 class MySQLiAdapter implements AdapterInterface
 {
