@@ -18,7 +18,7 @@ class MySQLiAdapter implements AdapterInterface
         {
             $error = mysqli_connect_error();
        
-            throw new DbException($error);
+            throw new Exception($error);
         }
         else
         {
@@ -50,7 +50,34 @@ class MySQLiAdapter implements AdapterInterface
         {
             $error = mysqli_error($this->_connection);
 
-            throw new DbException($error);
+            throw new Exception($error);
+        }
+
+        return $return;
+    }
+
+    public function multiQuery($sql)
+    {
+        $return = mysqli_multi_query($this->_connection, $sql);
+
+        if (!$return)
+        {
+            $error = mysqli_error($this->_connection);
+
+            throw new Exception($error);
+        }
+
+        do
+        {
+            mysqli_next_result($this->_connection);            
+        }
+        while(mysqli_more_results($this->_connection));
+
+        if (mysqli_errno($this->_connection))
+        {
+            $error = mysqli_error($this->_connection);
+        
+            throw new Exception($error);
         }
 
         return $return;
